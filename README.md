@@ -1,19 +1,22 @@
-        Principiul SRP (Single Responsibility Principle): Fiecare clasă (Shape, Rectangle, Circle, AreaCalculator) 
-        are o singură responsabilitate și este responsabilă de a-și îndeplini responsabilitatea respectivă.
+        Principiul responsabilității unice (Single Responsibility Principle) este respectat în clasa Car,
+        care are o singură responsabilitate: de a descrie mașina. Aceasta nu conține logica specifică 
+        pentru mașinile electrice sau hibride, care este gestionată de clasele derivate ElectricCar și HybridCar.
 
-        Principiul OCP (Open-Closed Principle): Nu modificăm codul existent în timp ce adăugăm noi funcționalități.
-        În exemplul de mai sus, am adăugat noi clase (Rectangle și Circle) fără a modifica codul existent în interfața
-        Shape sau în clasa AreaCalculator.
+        Principiul deschis-închis (Open-Closed Principle) este respectat prin intermediul claselor 
+        derivate ElectricCar și HybridCar. Aceste clase sunt deschise pentru extensie prin adăugarea
+        de noi funcționalități și închise pentru modificare, deoarece modificările aduse clasei de 
+        bază Car nu afectează codul acestor clase derivate.
 
-        Principiul LSP (Liskov Substitution Principle): Putem folosi obiectele unor clase derivate (Rectangle și Circle)
-        în locul obiectelor interfeței Shape,
-        iar programul va funcționa corect și fără probleme.
+        Principiul substituției lui Liskov (Liskov Substitution Principle) este respectat în relația
+        dintre clasa de bază Car și clasele derivate ElectricCar și HybridCar. Aceste clase derivate 
+        pot fi utilizate în locul clasei de bază Car fără a afecta comportamentul programului.
 
-        Principiul ISP (Interface Segregation Principle): Interfața Shape este simplă și include doar metoda area(), 
-        care este relevantă pentru toate formele. Astfel, nu adăugăm metode inutile sau nerelevante în interfața Shape.
+        Principiul segregării interfeței (Interface Segregation Principle) este respectat prin 
+        intermediul claselor CarList, ElectricCarList și HybridCarList, care implementează interfețe 
+        specializate pentru fiecare tip de mașină. Astfel, fiecare client poate utiliza interfața 
+        adecvată pentru tipul de mașină dorit.
 
-        Principiul DIP (Dependency Inversion Principle): Clasa AreaCalculator depinde doar de interfața Shape și nu de 
-        clasele concrete Rectangle sau Circle. 
-        Aceasta face ca clasa AreaCalculator să fie mai flexibilă și să poată lucra cu alte clase care implementează 
-        interfața Shape fără a fi nevoie să fie 
-        schimbat codul din clasa AreaCalculator.
+        Principiul inversării dependențelor (Dependency Inversion Principle) este respectat prin 
+        intermediul clasei CarService, care folosește interfețe pentru a decupla clasele.
+        Astfel, CarService depinde de interfața CarList, iar ElectricCarList și HybridCarList 
+        implementează această interfață, fără a depinde direct de CarService.
