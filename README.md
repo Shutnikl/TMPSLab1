@@ -1,22 +1,28 @@
-        Principiul responsabilității unice (Single Responsibility Principle) este respectat în clasa Car,
-        care are o singură responsabilitate: de a descrie mașina. Aceasta nu conține logica specifică 
-        pentru mașinile electrice sau hibride, care este gestionată de clasele derivate ElectricCar și HybridCar.
+        Single Responsibility Principle (SRP) - fiecare clasă are o singură
+        responsabilitate: Clasele Car, ElectricCar și HybridCar au responsabilitatea
+        de a crea obiecte de tip mașină cu anumite caracteristici și de a returna 
+        descrierea lor. Clasele CarList, ElectricCarList și HybridCarList au 
+        responsabilitatea de a gestiona o listă de mașini și de a returna descrieri
+        specifice tipului de mașină. Clasa CarService are responsabilitatea de a 
+        prelua o listă de mașini și de a returna descrierile lor.
 
-        Principiul deschis-închis (Open-Closed Principle) este respectat prin intermediul claselor 
-        derivate ElectricCar și HybridCar. Aceste clase sunt deschise pentru extensie prin adăugarea
-        de noi funcționalități și închise pentru modificare, deoarece modificările aduse clasei de 
-        bază Car nu afectează codul acestor clase derivate.
+        Open-Closed Principle (OCP) - clasele sunt deschise pentru extensie,
+        dar închise pentru modificare: Clasele ElectricCar și HybridCar extind 
+        clasa de bază Car, adăugând noi comportamente fără a modifica clasa de bază.
 
-        Principiul substituției lui Liskov (Liskov Substitution Principle) este respectat în relația
-        dintre clasa de bază Car și clasele derivate ElectricCar și HybridCar. Aceste clase derivate 
-        pot fi utilizate în locul clasei de bază Car fără a afecta comportamentul programului.
+        Liskov Substitution Principle (LSP) - subclasele pot fi folosite în locul 
+        claselor părinte: Obiectele de tip ElectricCar și HybridCar pot fi utilizate 
+        în locul obiectelor de tip Car fără a afecta funcționalitatea codului.
 
-        Principiul segregării interfeței (Interface Segregation Principle) este respectat prin 
-        intermediul claselor CarList, ElectricCarList și HybridCarList, care implementează interfețe 
-        specializate pentru fiecare tip de mașină. Astfel, fiecare client poate utiliza interfața 
-        adecvată pentru tipul de mașină dorit.
+        Interface Segregation Principle (ISP) - interfețele sunt specializate pentru
+        fiecare client: Clasele CarList, ElectricCarList și HybridCarList folosesc
+        metode specifice tipului de mașină pentru a returna descrierile, iar clasa 
+        CarService utilizează aceste metode specializate în funcție de tipul de obiect
+        pe care îl primește.
 
-        Principiul inversării dependențelor (Dependency Inversion Principle) este respectat prin 
-        intermediul clasei CarService, care folosește interfețe pentru a decupla clasele.
-        Astfel, CarService depinde de interfața CarList, iar ElectricCarList și HybridCarList 
-        implementează această interfață, fără a depinde direct de CarService.
+        Dependency Inversion Principle (DIP) - interfețele sunt folosite pentru a 
+        decupla clasele: Clasa CarService primește o interfață de tip CarList în loc 
+        de o clasă concretă, ceea ce permite schimbarea tipului de listă de mașini fără 
+        a afecta funcționalitatea codului. De asemenea, interfețele utilizate în clasele
+        CarList, ElectricCarList și HybridCarList permit decuplarea acestora de clasele 
+        ConcreteCarList, ConcreteElectricCarList și ConcreteHybridCarList.
